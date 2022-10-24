@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBvg7Yl45d4oTiJUuHfLi0gtURHt0x_eiA',
-    appId: '1:9206339172:android:18aa7bc03e9a00132d7171',
+    appId: '1:9206339172:android:619f583c4a11bf752d7171',
     messagingSenderId: '9206339172',
     projectId: 'cart-manager2022',
     storageBucket: 'cart-manager2022.appspot.com',
@@ -59,11 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyApwabcQjw6k1J0BDrYqnvQWqadGn91pkk',
-    appId: '1:9206339172:ios:98e215529acb930e2d7171',
+    appId: '1:9206339172:ios:2bbbf30b866753ca2d7171',
     messagingSenderId: '9206339172',
     projectId: 'cart-manager2022',
     storageBucket: 'cart-manager2022.appspot.com',
-    iosClientId: '9206339172-f65eefscpht1e4s8nfqu9l0fburdf338.apps.googleusercontent.com',
-    iosBundleId: 'com.example.projetoSemnome',
+    iosClientId: '9206339172-jqtk5c30kvv2h8nl2gbn4f7mh5li5f89.apps.googleusercontent.com',
+    iosBundleId: 'com.example.cartManager',
   );
 }

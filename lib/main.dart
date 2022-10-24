@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:manager_cart/app.dart';
-import 'package:manager_cart/repositories/cart.dart';
-import 'package:manager_cart/services/auth_services.dart';
+import 'package:cart_manager/app.dart';
+import 'package:cart_manager/repositories/cart.dart';
+import 'package:cart_manager/services/auth_services.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:manager_cart/pages/create_account_page.dart';
-import 'package:manager_cart/services/auth_services.dart';
+import 'package:cart_manager/pages/create_account_page.dart';
+import 'package:cart_manager/services/auth_services.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {

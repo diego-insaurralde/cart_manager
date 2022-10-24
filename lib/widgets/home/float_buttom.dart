@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:manager_cart/widgets/cart/add_product_sheet.dart';
+import 'package:cart_manager/widgets/cart/add_product_sheet.dart';
 
 class FloatButtom extends StatelessWidget {
   const FloatButtom({super.key});

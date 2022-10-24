@@ -1,4 +1,4 @@
-package com.example.manager_cart
+package com.example.cart_manager
 
 import io.flutter.embedding.android.FlutterActivity
 

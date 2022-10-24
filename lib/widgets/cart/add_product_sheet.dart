@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:manager_cart/models/product.dart';
-import 'package:manager_cart/repositories/cart.dart';
+import 'package:cart_manager/models/product.dart';
+import 'package:cart_manager/repositories/cart.dart';
 import 'package:provider/provider.dart';
 
 class AddProductSheet extends StatefulWidget {

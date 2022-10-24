@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:manager_cart/widgets/auth/auth_check.dart';
+import 'package:cart_manager/widgets/auth/auth_check.dart';
 
 class App extends StatelessWidget {
   final String np = "Sem nome";

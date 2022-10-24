@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:manager_cart/services/auth_services.dart';
-import 'package:manager_cart/widgets/home/bottom_bar.dart';
-import 'package:manager_cart/widgets/home/float_buttom.dart';
+import 'package:cart_manager/services/auth_services.dart';
+import 'package:cart_manager/widgets/home/bottom_bar.dart';
+import 'package:cart_manager/widgets/home/float_buttom.dart';
 import 'package:provider/provider.dart';
 
 class AccountPage extends StatefulWidget {

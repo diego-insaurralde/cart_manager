@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:manager_cart/pages/account_page.dart';
-import 'package:manager_cart/pages/analytics_page.dart';
-import 'package:manager_cart/pages/cart_page.dart';
-import 'package:manager_cart/pages/home_page.dart';
+import 'package:cart_manager/pages/account_page.dart';
+import 'package:cart_manager/pages/analytics_page.dart';
+import 'package:cart_manager/pages/cart_page.dart';
+import 'package:cart_manager/pages/home_page.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});

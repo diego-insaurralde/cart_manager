@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:manager_cart/repositories/cart.dart';
-import 'package:manager_cart/widgets/cart/cart_view.dart';
-import 'package:manager_cart/widgets/cart/product_card.dart';
-import 'package:manager_cart/widgets/cart/save_cart_buttom.dart';
-import 'package:manager_cart/widgets/home/bottom_bar.dart';
-import 'package:manager_cart/widgets/home/float_buttom.dart';
+import 'package:cart_manager/repositories/cart.dart';
+import 'package:cart_manager/widgets/cart/cart_view.dart';
+import 'package:cart_manager/widgets/cart/product_card.dart';
+import 'package:cart_manager/widgets/cart/save_cart_buttom.dart';
+import 'package:cart_manager/widgets/home/bottom_bar.dart';
+import 'package:cart_manager/widgets/home/float_buttom.dart';
 import 'package:provider/provider.dart';
 
 import '../models/product.dart';
