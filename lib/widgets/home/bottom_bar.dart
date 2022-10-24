@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_semnome/pages/analytics_page.dart';
-import 'package:projeto_semnome/pages/cart_page.dart';
-import 'package:projeto_semnome/pages/home_page.dart';
+import 'package:manager_cart/pages/account_page.dart';
+import 'package:manager_cart/pages/analytics_page.dart';
+import 'package:manager_cart/pages/cart_page.dart';
+import 'package:manager_cart/pages/home_page.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});
@@ -24,6 +25,12 @@ class BottomBar extends StatelessWidget {
     );
   }
 
+  openAccount(context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const AccountPage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -38,7 +45,7 @@ class BottomBar extends StatelessWidget {
             color: Colors.white,
           ),
           const SizedBox(
-            width: 8,
+            width: 12,
           ),
           IconButton(
             icon: const Icon(Icons.shopping_cart_rounded),
@@ -51,6 +58,17 @@ class BottomBar extends StatelessWidget {
             icon: const Icon(Icons.analytics),
             onPressed: () {
               openAnalytics(context);
+            },
+            iconSize: 35,
+            color: Colors.white,
+          ),
+          const SizedBox(
+            width: 12,
+          ),
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              openAccount(context);
             },
             iconSize: 35,
             color: Colors.white,

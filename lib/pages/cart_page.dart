@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_semnome/repositories/cart.dart';
-import 'package:projeto_semnome/widgets/cart/cart_view.dart';
-import 'package:projeto_semnome/widgets/cart/product_card.dart';
-import 'package:projeto_semnome/widgets/home/bottom_bar.dart';
-import 'package:projeto_semnome/widgets/home/float_buttom.dart';
+import 'package:manager_cart/repositories/cart.dart';
+import 'package:manager_cart/widgets/cart/cart_view.dart';
+import 'package:manager_cart/widgets/cart/product_card.dart';
+import 'package:manager_cart/widgets/cart/save_cart_buttom.dart';
+import 'package:manager_cart/widgets/home/bottom_bar.dart';
+import 'package:manager_cart/widgets/home/float_buttom.dart';
 import 'package:provider/provider.dart';
 
 import '../models/product.dart';
@@ -21,9 +22,15 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Carrinho"),
-        elevation: 0,
-      ),
+          title: const Text("Carrinho",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          elevation: 0,
+          leading: const Icon(
+            Icons.shopping_cart_checkout_rounded,
+            color: Colors.white,
+            size: 30,
+          )),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const FloatButtom(),
       bottomNavigationBar: const BottomBar(),
@@ -32,21 +39,14 @@ class _CartPageState extends State<CartPage> {
             ? Stack(children: [
                 SizedBox(
                   width: double.infinity,
-                  height: 150,
+                  height: 165,
                   child: Card(
                     child: GridView.count(
                       crossAxisCount: 1,
-                      mainAxisSpacing: 2,
+                      mainAxisSpacing: 10,
                       crossAxisSpacing: 0,
                       childAspectRatio: 9,
                       children: [
-                        Center(
-                          child: Text(
-                              "${dateToday.day}/${dateToday.month}/${dateToday.year}",
-                              style: const TextStyle(
-                                fontSize: 20,
-                              )),
-                        ),
                         ListTile(
                           title: const Text("Nº de Itens",
                               style: TextStyle(fontSize: 25)),
@@ -61,6 +61,7 @@ class _CartPageState extends State<CartPage> {
                                   .replaceAll('.', ','),
                               style: const TextStyle(fontSize: 25)),
                         ),
+                        const SaveCartButtom()
                       ],
                     ),
                   ),
@@ -70,11 +71,10 @@ class _CartPageState extends State<CartPage> {
                     repository.cart.map(
                       (Product product) => ProductCard(
                           product: product,
-                          onTap: () =>
-                              {context.read<Cart>().removeProduct(product)}),
+                          onTap: () => {repository.removeProduct(product)}),
                     ),
                   ),
-                )
+                ),
               ])
             : const Center(
                 child: Text("Carrinho Vazio", style: TextStyle(fontSize: 30))),

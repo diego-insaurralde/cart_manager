@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projeto_semnome/pages/home_page.dart';
+import 'package:manager_cart/widgets/auth/auth_check.dart';
 
 class App extends StatelessWidget {
   final String np = "Sem nome";
@@ -13,10 +13,10 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.lightGreen,
-          textTheme: GoogleFonts.montserratTextTheme(
+          textTheme: GoogleFonts.openSansTextTheme(
             ThemeData.light().textTheme,
           )),
-      home: const Home(),
+      home: const AuthCheck(),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
-import 'package:projeto_semnome/models/product.dart';
+import 'package:manager_cart/models/product.dart';
 
 class Cart extends ChangeNotifier {
   List<Product> _cart = [];
@@ -54,7 +54,8 @@ class Cart extends ChangeNotifier {
 
   double get sumCart {
     if (cart.isNotEmpty) {
-      return List.from(cart.map((Product product) => product.price))
+      return List.from(
+              cart.map((Product product) => product.price * product.quantity))
           .reduce((value, element) => value + element);
     } else {
       return 0;

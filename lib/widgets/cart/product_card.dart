@@ -22,7 +22,8 @@ class ProductCard extends StatelessWidget {
             minVerticalPadding: 1,
             leading: CircleAvatar(
               backgroundColor: const Color.fromARGB(255, 104, 146, 55),
-              child: Text(product.quantity.toString()),
+              child: Text(product.quantity.toString(),
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
             ),
             title: Text(product.name),
             subtitle: Text(

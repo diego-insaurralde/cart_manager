@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.projeto_semnome">
+    package="com.example.manager_cart">
    <application
-        android:label="projeto_semnome"
+        android:label="manager_cart"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

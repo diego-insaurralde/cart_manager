@@ -10,22 +10,11 @@ class AnalyticsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Análise"),
-        actions: [
-          PopupMenuButton(
-            icon: const Icon(Icons.more_vert),
-            itemBuilder: (BuildContext context) => [
-              PopupMenuItem(
-                child: ListTile(
-                  leading: const Icon(Icons.delete_rounded),
-                  title: const Text('Remover'),
-                  onTap: () => {},
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
+          title: const Text("Análise",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          leading: const Icon(Icons.stacked_bar_chart_rounded,
+              size: 30, color: Colors.white)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const FloatButtom(),
       bottomNavigationBar: const BottomBar(),
