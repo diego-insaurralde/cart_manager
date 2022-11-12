@@ -1,13 +1,22 @@
+import 'package:cart_manager/repositories/cart.dart';
+import 'package:cart_manager/repositories/cart_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SaveCartButtom extends StatefulWidget {
-  const SaveCartButtom({super.key});
+  const SaveCartButtom({
+    super.key,
+  });
 
   @override
   State<SaveCartButtom> createState() => _SaveCartButtomState();
 }
 
 class _SaveCartButtomState extends State<SaveCartButtom> {
+  getCart() {
+    return Provider.of<Cart>(context, listen: false).cartInstance;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -15,7 +24,11 @@ class _SaveCartButtomState extends State<SaveCartButtom> {
         width: MediaQuery.of(context).size.width * 0.5,
         height: 40,
         child: ElevatedButton(
-          onPressed: () => {},
+          onPressed: () => {
+            Provider.of<Cart>(context, listen: false).deactiveCart(),
+            Provider.of<CartRepository>(context, listen: false)
+                .addCart(getCart())
+          },
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
                   const Color.fromARGB(255, 104, 146, 55))),

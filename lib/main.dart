@@ -1,3 +1,5 @@
+import 'package:cart_manager/repositories/cart_repository.dart';
+import 'package:cart_manager/repositories/products_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:cart_manager/app.dart';
 import 'package:cart_manager/repositories/cart.dart';
@@ -18,7 +20,15 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthService()),
-        ChangeNotifierProvider(create: (context) => Cart()),
+        ChangeNotifierProvider(
+          create: (context) => Cart(auth: context.read<AuthService>()),
+        ),
+        ChangeNotifierProvider(
+            create: (context) =>
+                CartRepository(auth: context.read<AuthService>())),
+        ChangeNotifierProvider(
+            create: (context) =>
+                ProductsRepository(auth: context.read<AuthService>()))
       ],
       child: const App(),
     ),

@@ -12,6 +12,14 @@ class AuthService extends ChangeNotifier {
   User? user;
   bool isLoading = true;
 
+  bool get isLogged {
+    if (!(user == null)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   AuthService() {
     _authCheck();
   }

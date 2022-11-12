@@ -16,8 +16,6 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  final DateTime dateToday = DateTime.now();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,49 +33,55 @@ class _CartPageState extends State<CartPage> {
       floatingActionButton: const FloatButtom(),
       bottomNavigationBar: const BottomBar(),
       body: Consumer<Cart>(
-        builder: (context, repository, _) => repository.cart.isNotEmpty
-            ? Stack(children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 165,
-                  child: Card(
-                    child: GridView.count(
-                      crossAxisCount: 1,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 0,
-                      childAspectRatio: 9,
-                      children: [
-                        ListTile(
-                          title: const Text("Nº de Itens",
-                              style: TextStyle(fontSize: 25)),
-                          trailing: Text("${repository.countCart}",
-                              style: const TextStyle(fontSize: 25)),
+        builder: (
+          context,
+          repository,
+          child,
+        ) =>
+            repository.cart.isNotEmpty
+                ? Stack(children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: 165,
+                      child: Card(
+                        child: GridView.count(
+                          crossAxisCount: 1,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 0,
+                          childAspectRatio: 9,
+                          children: [
+                            ListTile(
+                              title: const Text("Nº de Itens",
+                                  style: TextStyle(fontSize: 25)),
+                              trailing: Text("${repository.countCart}",
+                                  style: const TextStyle(fontSize: 25)),
+                            ),
+                            ListTile(
+                              title: const Text("Total",
+                                  style: TextStyle(fontSize: 25)),
+                              trailing: Text(
+                                  "R\$${repository.sumCart.toStringAsFixed(2)}"
+                                      .replaceAll('.', ','),
+                                  style: const TextStyle(fontSize: 25)),
+                            ),
+                            const SaveCartButtom()
+                          ],
                         ),
-                        ListTile(
-                          title: const Text("Total",
-                              style: TextStyle(fontSize: 25)),
-                          trailing: Text(
-                              "R\$${repository.sumCart.toStringAsFixed(2)}"
-                                  .replaceAll('.', ','),
-                              style: const TextStyle(fontSize: 25)),
+                      ),
+                    ),
+                    CartView(
+                      cart: List.from(
+                        repository.cart.map(
+                          (Product product) => ProductCard(
+                              product: product,
+                              onTap: () => {repository.removeProduct(product)}),
                         ),
-                        const SaveCartButtom()
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-                CartView(
-                  cart: List.from(
-                    repository.cart.map(
-                      (Product product) => ProductCard(
-                          product: product,
-                          onTap: () => {repository.removeProduct(product)}),
-                    ),
-                  ),
-                ),
-              ])
-            : const Center(
-                child: Text("Carrinho Vazio", style: TextStyle(fontSize: 30))),
+                  ])
+                : const Center(
+                    child:
+                        Text("Carrinho Vazio", style: TextStyle(fontSize: 30))),
       ),
     );
   }

@@ -26,9 +26,32 @@ class _AccountPageState extends State<AccountPage> {
         body: Column(
           children: [
             Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+              child: Card(
+                elevation: 5,
+                child: ListTile(
+                  title: const Icon(
+                    Icons.person,
+                    size: 150,
+                    color: Color.fromARGB(255, 104, 146, 55),
+                  ),
+                  subtitle: Center(
+                      child: Text(
+                          context.read<AuthService>().user!.email.toString(),
+                          style: const TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 104, 146, 55),
+                              fontWeight: FontWeight.bold))),
+                ),
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.symmetric(vertical: 24),
               child: OutlinedButton(
-                  onPressed: () => context.read<AuthService>().logout(),
+                  onPressed: () => {
+                        Navigator.popUntil(context, ModalRoute.withName("/")),
+                        context.read<AuthService>().logout()
+                      },
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.red,
                   ),

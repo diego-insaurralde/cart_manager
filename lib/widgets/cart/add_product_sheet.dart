@@ -115,7 +115,7 @@ class _AddProductSheetState extends State<AddProductSheet> {
                 const SizedBox(
                   height: 10,
                 ),
-                Consumer<Cart>(builder: (context, repository, _) {
+                Consumer<Cart>(builder: (context, repository, child) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15.5),
                     child: SizedBox(

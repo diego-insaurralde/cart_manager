@@ -15,7 +15,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   final _userPassword = TextEditingController();
   final _userCompleteName = TextEditingController();
 
+  bool loading = false;
+
   createAccount() async {
+    setState(() => loading = true);
     try {
       await context
           .read<AuthService>()
@@ -23,6 +26,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       if (!mounted) return;
       Navigator.of(context).pop();
     } on AuthException catch (e) {
+      setState(() => loading = false);
+
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
     }

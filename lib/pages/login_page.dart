@@ -1,3 +1,5 @@
+import 'package:cart_manager/repositories/cart.dart';
+import 'package:cart_manager/repositories/cart_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:cart_manager/pages/create_account_page.dart';
 import 'package:cart_manager/services/auth_services.dart';
@@ -15,10 +17,15 @@ class _LoginPageState extends State<LoginPage> {
   final email = TextEditingController();
   final password = TextEditingController();
 
+  bool loading = false;
+
   login() async {
+    setState(() => loading = true);
     try {
       await context.read<AuthService>().login(email.text, password.text);
     } on AuthException catch (e) {
+      setState(() => loading = false);
+
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
     }
@@ -114,11 +121,17 @@ class _LoginPageState extends State<LoginPage> {
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
                                   const Color.fromARGB(255, 104, 146, 55))),
-                          child: const Text("Entrar",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                  color: Colors.white)),
+                          child: (loading)
+                              ? const CircularProgressIndicator(
+                                  color: Colors.white,
+                                  backgroundColor:
+                                      Color.fromARGB(255, 104, 146, 55),
+                                )
+                              : const Text("Entrar",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      color: Colors.white)),
                         ),
                       ),
                     ),

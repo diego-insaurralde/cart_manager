@@ -23,6 +23,6 @@ class Home extends StatelessWidget {
         floatingActionButton: const FloatButtom(),
         bottomNavigationBar: const BottomBar(),
         body: const Center(
-            child: Text("Bem Vindo", style: TextStyle(fontSize: 30))));
+            child: Text("Bem vindo", style: TextStyle(fontSize: 24))));
   }
 }
