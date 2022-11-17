@@ -39,7 +39,7 @@ class _CartPageState extends State<CartPage> {
           child,
         ) =>
             repository.cart.isNotEmpty
-                ? Stack(children: [
+                ? Column(children: [
                     SizedBox(
                       width: double.infinity,
                       height: 165,
@@ -69,12 +69,15 @@ class _CartPageState extends State<CartPage> {
                         ),
                       ),
                     ),
-                    CartView(
-                      cart: List.from(
-                        repository.cart.map(
-                          (Product product) => ProductCard(
-                              product: product,
-                              onTap: () => {repository.removeProduct(product)}),
+                    Flexible(
+                      child: CartView(
+                        cart: List.from(
+                          repository.cart.map(
+                            (Product product) => ProductCard(
+                                product: product,
+                                onTap: () =>
+                                    {repository.removeProduct(product)}),
+                          ),
                         ),
                       ),
                     ),

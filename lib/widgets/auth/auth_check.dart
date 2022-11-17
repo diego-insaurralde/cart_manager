@@ -1,5 +1,3 @@
-import 'package:cart_manager/repositories/cart.dart';
-import 'package:cart_manager/repositories/cart_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:cart_manager/pages/home_page.dart';
 import 'package:cart_manager/pages/login_page.dart';

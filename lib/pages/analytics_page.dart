@@ -45,8 +45,8 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                 cartList: List.from(
                   carts.cart.map((CartModel cart) => CartCard(
                       cart: cart,
-                      onTap: () => {
-                            context
+                      onTap: () async => {
+                            await context
                                 .read<ProductsRepository>()
                                 .loadProducts(cart),
                             showModalBottomSheet(

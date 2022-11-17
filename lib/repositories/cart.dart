@@ -125,17 +125,17 @@ class Cart extends ChangeNotifier {
       'userId': auth.user!.uid,
       'cartName': '${cartDate.day}-${cartDate.month}-${cartDate.year}',
       'cartDate': '${cartDate.day}-${cartDate.month}-${cartDate.year}',
+      'sumCart': sumCart
     });
 
-    await db
-        .collection('carts_active/')
-        .doc(auth.user!.uid)
-        .set({"userId": auth.user!.uid, "isCartActive": true});
+    await db.collection('carts_active/').doc(auth.user!.uid).set(
+        {"userId": auth.user!.uid, "isCartActive": true, "cartId": cart.id});
 
     cartInstance = CartModel(
         cartIdKey: cart.id,
         name: '${cartDate.day}-${cartDate.month}-${cartDate.year}',
-        date: '${cartDate.day}-${cartDate.month}-${cartDate.year}');
+        date: '${cartDate.day}-${cartDate.month}-${cartDate.year}',
+        sumCart: sumCart);
     return cart.id;
   }
 
@@ -153,6 +153,12 @@ class Cart extends ChangeNotifier {
           .collection('carts_active/')
           .doc(snapshotCartActive.docs.first.id)
           .update({'isCartActive': false});
+
+      await db
+          .collection('carts/')
+          .doc(snapshotCartActive.docs.first.get('cartId'))
+          .update({'sumCart': sumCart});
+
       _cart.clear();
     }
 

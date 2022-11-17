@@ -28,20 +28,27 @@ class ProductsRepository extends ChangeNotifier {
   }
 
   loadProducts(CartModel cart) async {
+    this.cart = cart;
+
+    if (_products.isNotEmpty) {
+      _products.clear();
+    }
     final snapshot = await db
         .collection('carts/')
         .doc(cart.cartIdKey)
         .collection('products/')
         .get();
-    snapshot.docs.forEach((doc) {
+
+    snapshot.docs.forEach((doc) async {
       Product product = Product(
           id: doc.id,
           name: doc.get('productName'),
           price: doc.get('productPrice'),
-          quantity: doc.get('productQuantity'));
+          quantity: doc.get('productQuantity'),
+          cartId: doc.get('cartId'));
       _products.add(product);
-      this.cart = cart;
     });
+
     notifyListeners();
   }
 

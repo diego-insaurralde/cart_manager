@@ -48,7 +48,8 @@ class CartRepository extends ChangeNotifier {
         CartModel cart = CartModel(
             cartIdKey: doc.id,
             name: doc.get('cartName'),
-            date: doc.get('cartDate'));
+            date: doc.get('cartDate'),
+            sumCart: doc.get('sumCart'));
         _carts.add(cart);
       });
     }

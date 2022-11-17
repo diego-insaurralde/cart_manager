@@ -10,14 +10,14 @@ class CartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.only(
-          top: 165, bottom: 35, start: 5, end: 5),
+      padding: const EdgeInsets.only(bottom: 20, left: 5, right: 5, top: 5),
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
         child: GridView.count(
             crossAxisCount: 1,
+            shrinkWrap: true,
             mainAxisSpacing: 2,
             crossAxisSpacing: 0,
             childAspectRatio: 6,

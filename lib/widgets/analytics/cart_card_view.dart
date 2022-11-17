@@ -10,7 +10,7 @@ class CartCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
           vertical: 20), //const EdgeInsets.only(top: 20, bottom: 300),
       child: GridView.count(
           crossAxisCount: 3,
