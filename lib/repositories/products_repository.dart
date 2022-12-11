@@ -39,7 +39,7 @@ class ProductsRepository extends ChangeNotifier {
         .collection('products/')
         .get();
 
-    snapshot.docs.forEach((doc) async {
+    for (var doc in snapshot.docs) {
       Product product = Product(
           id: doc.id,
           name: doc.get('productName'),
@@ -47,7 +47,7 @@ class ProductsRepository extends ChangeNotifier {
           quantity: doc.get('productQuantity'),
           cartId: doc.get('cartId'));
       _products.add(product);
-    });
+    }
 
     notifyListeners();
   }

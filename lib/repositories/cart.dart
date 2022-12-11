@@ -12,15 +12,14 @@ class Cart extends ChangeNotifier {
   int productId = 0;
   late FirebaseFirestore db;
   late AuthService auth;
-  late bool _isCartActive;
-  late CartModel cartInstance;
+  bool? _isCartActive;
+  CartModel? cartInstance;
 
   UnmodifiableListView<Product> get cart =>
       UnmodifiableListView<Product>(_cart);
 
   Cart({required this.auth}) {
     _startRepository();
-    print("AQUIIII");
   }
 
   _startRepository() async {
@@ -34,7 +33,7 @@ class Cart extends ChangeNotifier {
   }
 
   _loadCart() async {
-    if (auth.user != null && _isCartActive) {
+    if (auth.user != null && _isCartActive!) {
       final snapshot = await db
           .collection('carts/')
           .where("userId", isEqualTo: auth.user!.uid)
@@ -66,7 +65,7 @@ class Cart extends ChangeNotifier {
   }
 
   addProduct(Product product) async {
-    if (_isCartActive) {
+    if (_isCartActive!) {
       final snapshot = await db
           .collection('carts/')
           .where("userId", isEqualTo: auth.user!.uid)
@@ -119,6 +118,7 @@ class Cart extends ChangeNotifier {
         .collection('carts/')
         .where("userId", isEqualTo: auth.user!.uid)
         .get();
+    _isCartActive = true;
     int newCartId = snapshot.size + 1;
     final cart = await carts.add({
       'cartId': newCartId,

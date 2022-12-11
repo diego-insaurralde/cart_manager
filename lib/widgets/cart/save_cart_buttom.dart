@@ -1,3 +1,4 @@
+import 'package:cart_manager/models/cart_model.dart';
 import 'package:cart_manager/repositories/cart.dart';
 import 'package:cart_manager/repositories/cart_repository.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,9 @@ class SaveCartButtom extends StatefulWidget {
 
 class _SaveCartButtomState extends State<SaveCartButtom> {
   getCart() {
-    return Provider.of<Cart>(context, listen: false).cartInstance;
+    CartModel? cart = Provider.of<Cart>(context, listen: false).cartInstance;
+    cart?.sumCart = Provider.of<Cart>(context, listen: false).sumCart;
+    return cart;
   }
 
   @override
@@ -27,7 +30,7 @@ class _SaveCartButtomState extends State<SaveCartButtom> {
           onPressed: () => {
             Provider.of<Cart>(context, listen: false).deactiveCart(),
             Provider.of<CartRepository>(context, listen: false)
-                .addCart(getCart())
+                .addCart(getCart()!)
           },
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(

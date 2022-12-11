@@ -1,5 +1,5 @@
+import 'package:cart_manager/widgets/menu_choice.dart';
 import 'package:flutter/material.dart';
-import 'package:cart_manager/widgets/cart/add_product_sheet.dart';
 
 class FloatButtom extends StatelessWidget {
   const FloatButtom({super.key});
@@ -11,7 +11,7 @@ class FloatButtom extends StatelessWidget {
       onPressed: () => {
         showModalBottomSheet(
           context: context,
-          builder: (_) => const AddProductSheet(),
+          builder: (_) => const MenuChoiceSheetBar(),
           backgroundColor: Colors.transparent,
           isScrollControlled: true,
         )
